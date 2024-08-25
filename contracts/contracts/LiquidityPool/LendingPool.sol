@@ -121,7 +121,7 @@ contract BondToken is ERC20Burnable, Ownable, Math {
 
     function _borrowLimit() public view returns (uint256) {
         uint256 amountLocked = usersCollateral[msg.sender];
-        require(amountLocked > 0, "No collateral found");
+        if(amountLocked==0)return 0;
         uint256 amountBorrowed = usersBorrowed[msg.sender];
         uint256 amountLeft = amountLocked-amountBorrowed;
         return (amountLeft*maxLTV)/100;

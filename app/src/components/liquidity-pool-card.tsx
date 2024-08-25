@@ -115,6 +115,7 @@ export default function LiquidityPoolCard() {
     const borrowAsset= async(e:FormEvent<HTMLFormElement>)=>{
         e.preventDefault();
         setError(null)
+        console.log(borrowLimit)
         if (parseEther(borrowValue) >= (borrowLimit ?? BigInt(0))) {
             
             setError(`Cannot borrow more than ${formatEther(borrowLimit ?? BigInt(0))}`)
@@ -174,27 +175,32 @@ export default function LiquidityPoolCard() {
     }
 
     return (
-        <div className="mb-4 flex flex-col w-full items-start justify-start  rounded-[8px] bg-card py-6 pl-3 pr-4">
-            <div>
+        <div className="mb-4 flex flex-col w-full items-start justify-start  rounded-[8px] bg-card py-4 pl-3 pr-4">
+            <div className='flex justify-center w-full mb-4'>
+                <p className="font-[850] text-2xl leading-4">
+                    Get Loan
+                </p>
+            </div>
+            <div className='mb-2'>
                 <div className="mb-2 flex ">
-                    <p className="font-[350] leading-4 pr-1">
+                    <p className="font-[850] leading-4 pr-1">
                         Collateral Balance:
                     </p>
-                    <p className="font-[350] leading-4 px-1">
+                    <p className="font-[850] leading-4 px-1">
                         {formatEther(collateralBalance ?? BigInt(0))}
                     </p>
                 </div>
-                <form onSubmit={addCollateral} className="flex items-center space-x-2 mb-2">
+                <form onSubmit={addCollateral} className="flex items-center space-x-2 mb-2 bg-white rounded-full">
                     <input
                         type="number"
                         value={collateralValue}
                         onChange={(e) => setCollateralValue(e.target.value)}
-                        className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-black"
-                        placeholder="Enter an integer"
+                        className="px-3   rounded-full focus:outline-none  text-black"
+                        placeholder="Collateral Amount"
                     />
                     <Button
                         disabled={isLoading}
-                        className="w-full bg-[#375BD2] text-base font-black leading-4 text-foreground hover:bg-[#375BD2]/90"
+                        className="w-full bg-[#375BD2] text-sm font-black leading-3 text-foreground hover:bg-[#375BD2]/90 rounded-full h-full"
                     >
                         {isLoading ? (
                             <Loader2 className="animate-spin" />
@@ -203,17 +209,17 @@ export default function LiquidityPoolCard() {
                         )}
                     </Button>
                 </form>
-                <form onSubmit={removeCollateral} className="flex items-center space-x-2 mb-2">
+                <form onSubmit={removeCollateral} className="flex items-center space-x-2 mb-2  bg-white rounded-full">
                     <input
                         type="number"
                         value={removecollateralValue}
                         onChange={(e) => setRemoveCollateralValue(e.target.value)}
-                        className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-black"
-                        placeholder="Enter an integer"
+                        className="px-3 py-2 rounded-full focus:outline-none text-black"
+                        placeholder="Collateral Amount"
                     />
                     <Button
                         disabled={isLoading}
-                        className="w-full bg-[#375BD2] text-base font-black leading-4 text-foreground hover:bg-[#375BD2]/90"
+                        className="w-full bg-[#375BD2] text-sm font-black leading-3 text-foreground hover:bg-[#375BD2]/90 rounded-full h-full"
                     >
                         {isLoading ? (
                             <Loader2 className="animate-spin" />
@@ -225,24 +231,24 @@ export default function LiquidityPoolCard() {
             </div>
             <div>
                 <div className="mb-2 flex ">
-                    <p className="font-[350] leading-4 pr-1">
+                    <p className="font-[850] leading-4 pr-1">
                         Borrowed Amount
                     </p>
-                    <p className="font-[350] leading-4 px-1">
+                    <p className="font-[850] leading-4 px-1">
                         {formatEther(borrowedBalance ?? BigInt(0))}
                     </p>
                 </div>
-                <form onSubmit={borrowAsset} className="flex items-center space-x-2 mb-2">
+                <form onSubmit={borrowAsset} className="flex items-center space-x-2 mb-2 bg-white rounded-full">
                     <input
                         type="number"
                         value={borrowValue}
                         onChange={(e) => setBorrowValue(e.target.value)}
-                        className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-black"
+                        className="px-3 py-2  rounded-full focus:outline-none  text-black"
                         placeholder="Amount to borrow"
                     />
                     <Button
                         disabled={isLoading}
-                        className="w-full bg-[#375BD2] text-base font-black leading-4 text-foreground hover:bg-[#375BD2]/90"
+                        className="w-full bg-[#375BD2] text-sm font-black leading-3 text-foreground hover:bg-[#375BD2]/90 rounded-full h-full"
                     >
                         {isLoading ? (
                             <Loader2 className="animate-spin" />
@@ -251,17 +257,17 @@ export default function LiquidityPoolCard() {
                         )}
                     </Button>
                 </form>
-                <form onSubmit={repayAsset}className="flex items-center space-x-2 mb-2">
+                <form onSubmit={repayAsset}className="flex items-center space-x-2 mb-2 bg-white rounded-full">
                     <input
                         type="number"
                         value={repayBorrowValue}
                         onChange={(e) => setRepayBorrowValue(e.target.value)}
-                        className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-black"
-                        placeholder="Enter an integer"
+                        className="px-3 py-2  rounded-full focus:outline-none  text-black"
+                        placeholder="Repay Amount Value"
                     />
                     <Button
                         disabled={isLoading}
-                        className="w-full bg-[#375BD2] text-base font-black leading-4 text-foreground hover:bg-[#375BD2]/90"
+                        className="w-full bg-[#375BD2] text-sm font-black leading-3 text-foreground hover:bg-[#375BD2]/90 rounded-full h-full"
                     >
                         {isLoading ? (
                             <Loader2 className="animate-spin" />

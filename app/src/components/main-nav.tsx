@@ -41,7 +41,7 @@ export default function MainNav() {
             />
           </a>
           <a
-            href="https://github.com/ragingrahul/Football-Prediction"
+            href="https://github.com/ragingrahul/Football-Fund"
             target="_blank"
             rel="noreferrer"
             className="mt-4 flex items-center space-x-[8px] text-base font-bold leading-4 hover:underline hover:brightness-125"

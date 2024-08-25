@@ -2,7 +2,6 @@
 pragma solidity ^0.8.0;
 
 import {ResultsConsumer} from "./ResultsConsumer.sol";
-import {NativeTokenSender} from "./ccip/NativeTokenSender.sol";
 import {AutomationCompatibleInterface} from "@chainlink/contracts/src/v0.8/automation/interfaces/AutomationCompatibleInterface.sol";
 import { OApp, Origin, MessagingFee } from "@layerzerolabs/lz-evm-oapp-v2/contracts/oapp/OApp.sol";
 import { OptionsBuilder } from "@layerzerolabs/lz-evm-oapp-v2/contracts/oapp/libs/OptionsBuilder.sol";
